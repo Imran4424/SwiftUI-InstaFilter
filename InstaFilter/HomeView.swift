@@ -8,14 +8,22 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var image: Image?
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            image?
+                .resizable()
+                .scaledToFit()
         }
-        .padding()
+        .onAppear(perform: loadImage)
+    }
+}
+
+// MARK: - Methods
+extension HomeView {
+    func loadImage() {
+        image = Image("batman")
     }
 }
 
