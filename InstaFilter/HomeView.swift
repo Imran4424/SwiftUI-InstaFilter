@@ -9,19 +9,28 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var image: Image?
+    @State private var inputImage: UIImage?
     @State private var showingImagePicker = false
     
     var body: some View {
         VStack {
+            Spacer()
+            
             image?
                 .resizable()
                 .scaledToFit()
+            
+            Spacer()
+            
             Button("Select Image Picker") {
                 showingImagePicker = true
             }
         }
         .sheet(isPresented: $showingImagePicker) {
-            ImagePicker()
+            ImagePicker(image: $inputImage)
+        }
+        .onChange(of: inputImage) {
+            loadImage()
         }
     }
 }
@@ -29,7 +38,12 @@ struct HomeView: View {
 // MARK: - Methods
 extension HomeView {
     func loadImage() {
-        image = Image("batman")
+        guard let inputImage = inputImage else {
+            print("Input image is nil")
+            return
+        }
+        
+        image = Image(uiImage: inputImage)
     }
 }
 
