@@ -10,37 +10,55 @@ import SwiftUI
 struct HomeView: View {
     @State private var image: Image?
     @State private var inputImage: UIImage?
+    @State private var filterIntensity = 0.5
     @State private var showingImagePicker = false
     
     var body: some View {
-        VStack {
-            Spacer()
-            
-            image?
-                .resizable()
-                .scaledToFit()
-            
-            Spacer()
-            
-            Button("Select Image Picker") {
-                showingImagePicker = true
-            }
-            
-            Button("Save Image") {
-                guard let inputImage = inputImage else {
-                    print("Input image is nil")
-                    return
+        NavigationStack {
+            VStack {
+                ZStack {
+                    Rectangle()
+                        .fill(.secondary)
+                    
+                    Text("Tap to select a picture")
+                        .foregroundStyle(Color.white)
+                        .font(.headline)
+                    
+                    image?
+                        .resizable()
+                        .scaledToFit()
+                }
+                .onTapGesture {
+                    // select an image
+                    showingImagePicker = true
                 }
                 
-                let imageSaver = ImageSaver()
-                imageSaver.writeToPhotoAlbum(image: inputImage)
+                HStack {
+                    Text("Intensity")
+                    Slider(value: $filterIntensity)
+                }
+                .padding()
+                
+                HStack {
+                    Button("Change Filter") {
+                        
+                    }
+                    
+                    Spacer()
+                    
+                    Button("Save") {
+                        save()
+                    }
+                }
             }
-        }
-        .sheet(isPresented: $showingImagePicker) {
-            ImagePicker(image: $inputImage)
-        }
-        .onChange(of: inputImage) {
-            loadImage()
+            .padding([.horizontal, .bottom])
+            .navigationTitle("InstaFilter")
+            .sheet(isPresented: $showingImagePicker) {
+                ImagePicker(image: $inputImage)
+            }
+            .onChange(of: inputImage) {
+                loadImage()
+            }
         }
     }
 }
@@ -54,8 +72,16 @@ extension HomeView {
         }
         
         image = Image(uiImage: inputImage)
+    }
+    
+    func save() {
+        guard let inputImage = inputImage else {
+            print("Input image is nil")
+            return
+        }
         
-        
+        let imageSaver = ImageSaver()
+        imageSaver.writeToPhotoAlbum(image: inputImage)
     }
 }
 
