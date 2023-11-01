@@ -25,6 +25,16 @@ struct HomeView: View {
             Button("Select Image Picker") {
                 showingImagePicker = true
             }
+            
+            Button("Save Image") {
+                guard let inputImage = inputImage else {
+                    print("Input image is nil")
+                    return
+                }
+                
+                let imageSaver = ImageSaver()
+                imageSaver.writeToPhotoAlbum(image: inputImage)
+            }
         }
         .sheet(isPresented: $showingImagePicker) {
             ImagePicker(image: $inputImage)
@@ -44,6 +54,8 @@ extension HomeView {
         }
         
         image = Image(uiImage: inputImage)
+        
+        
     }
 }
 

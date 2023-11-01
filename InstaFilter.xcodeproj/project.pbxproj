@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D3700C82AF2BDD300E6E8CE /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3700C72AF2BDD300E6E8CE /* ImageSaver.swift */; };
 		1DE580BD2AED13C600082777 /* InstaFilterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE580BC2AED13C600082777 /* InstaFilterApp.swift */; };
 		1DE580BF2AED13C600082777 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE580BE2AED13C600082777 /* HomeView.swift */; };
 		1DE580C12AED13C700082777 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DE580C02AED13C700082777 /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D3700C72AF2BDD300E6E8CE /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		1DE580B92AED13C600082777 /* InstaFilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstaFilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DE580BC2AED13C600082777 /* InstaFilterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstaFilterApp.swift; sourceTree = "<group>"; };
 		1DE580BE2AED13C600082777 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 				1DE580BC2AED13C600082777 /* InstaFilterApp.swift */,
 				1DE580BE2AED13C600082777 /* HomeView.swift */,
 				1DE580E42AEE76B300082777 /* ImagePicker.swift */,
+				1D3700C72AF2BDD300E6E8CE /* ImageSaver.swift */,
 				1DE580C02AED13C700082777 /* Assets.xcassets */,
 				1DE580C22AED13C700082777 /* Preview Content */,
 			);
@@ -143,6 +146,7 @@
 				1DE580E52AEE76B300082777 /* ImagePicker.swift in Sources */,
 				1DE580BF2AED13C600082777 /* HomeView.swift in Sources */,
 				1DE580BD2AED13C600082777 /* InstaFilterApp.swift in Sources */,
+				1D3700C82AF2BDD300E6E8CE /* ImageSaver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
