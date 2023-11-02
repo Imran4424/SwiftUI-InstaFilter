@@ -12,6 +12,8 @@ import SwiftUI
 struct HomeView: View {
     @State private var image: Image?
     @State private var inputImage: UIImage?
+    @State private var processedImage: UIImage?
+    
     @State private var filterIntensity = 0.5
     @State private var showingImagePicker = false
     
@@ -127,16 +129,17 @@ extension HomeView {
         
         let uiImage = UIImage(cgImage: cgImage)
         image = Image(uiImage: uiImage)
+        processedImage = uiImage
     }
     
     func save() {
-        guard let inputImage = inputImage else {
-            print("Input image is nil")
+        guard let processedImage = processedImage else {
+            print("Processed Image is nil")
             return
         }
         
         let imageSaver = ImageSaver()
-        imageSaver.writeToPhotoAlbum(image: inputImage)
+        imageSaver.writeToPhotoAlbum(image: processedImage)
     }
 }
 
