@@ -139,6 +139,15 @@ extension HomeView {
         }
         
         let imageSaver = ImageSaver()
+        
+        imageSaver.successHandler = {
+            print("Success! Image saved successfully")
+        }
+        
+        imageSaver.errorHandler = {
+            print("Opps! \($0.localizedDescription)")
+        }
+        
         imageSaver.writeToPhotoAlbum(image: processedImage)
     }
 }
